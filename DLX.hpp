@@ -108,7 +108,7 @@ private:
       }
       return;
     }
-    if ((int)now.size() + A() < (int)ans[0].size()) {
+    if ((int)now.size() + A() <= (int)ans[0].size()) {
       int c = R[0];
       for (int i = R[0]; i; i = R[i]) {
         if (S[i] < S[c]) {
