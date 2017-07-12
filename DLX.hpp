@@ -27,7 +27,7 @@ public:
       }
     }
     for (int i = 1; i <= (int)vec.size(); i++) {
-      ans.push_back(i);
+      ans.push_back(i - 1);
     }
     vis.assign(ele_num + 1, false);
   }
