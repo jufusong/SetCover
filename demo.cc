@@ -17,9 +17,13 @@ int main(int argc, char *argv[]) {
       a[i].insert(t);
     }
   }
-  vector<int> ret = DLX(n, a).run();
-  for (auto x : ret) {
-    cout << x << " ";
+  vector<vector<int>> ret = DLX(n, a).run();
+  for (int i = 0; i < (int)ret.size(); i++) {
+    cout << "# " << i << endl;
+    for (auto x : ret[i]) {
+      cout << x << " ";
+    }
+    cout << endl;
   }
   cout << endl;
   return 0;

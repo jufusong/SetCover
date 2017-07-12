@@ -26,8 +26,9 @@ public:
         link(i + 1, x + 1);
       }
     }
+    ans.push_back(vector<int>());
     for (int i = 1; i <= (int)vec.size(); i++) {
-      ans.push_back(i - 1);
+      ans[0].push_back(i - 1);
     }
     vis.assign(ele_num + 1, false);
   }
@@ -37,7 +38,7 @@ public:
    *  \param None
    *  \return choosen sets, indexed from 0
    */
-  vector<int> run() {
+  vector<vector<int>> run() {
     vector<int> now;
     dance(now);
     return ans;
@@ -99,12 +100,15 @@ private:
 
   void dance(vector<int> &now) {
     if (!R[0]) {
-      if (now.size() < ans.size()) {
-        ans = now;
+      if (now.size() < ans[0].size()) {
+        ans.clear();
+        ans.push_back(now);
+      } else if (now.size() == ans[0].size()) {
+        ans.push_back(now);
       }
       return;
     }
-    if ((int)now.size() + A() < (int)ans.size()) {
+    if ((int)now.size() + A() < (int)ans[0].size()) {
       int c = R[0];
       for (int i = R[0]; i; i = R[i]) {
         if (S[i] < S[c]) {
@@ -128,6 +132,6 @@ private:
   }
   
   vector<int> U, D, L, R, column, row, H, S;
-  vector<int> ans;
+  vector<vector<int>> ans;
   vector<bool> vis;
 };
